@@ -76,6 +76,26 @@ checking p01 coverage; the flat median must be time-aware; and before
 firing, ask "does this correction change the final score?" — if not, do
 not fire.
 
+## Round 2's change: random-walk spread 0.30 -> 0.25
+
+The round-1 entry (this same model at WALK 0.30) landed on the live
+board at loss 0.147, rank #734 — worse than the earlier 0.135 round on
+the practice preview, as expected: tightening the walk narrows the
+quantiles, and the practice cases straddle the first refresh, where the
+truth sits outside a narrow band. But the prize is decided on the final,
+not the preview, and on simulated finals the walk step keeps paying:
+
+| | sims mean (A/B/C) | practice LIVE |
+|---|---|---|
+| WALK 0.30 | 0.1708 | 0.1111 |
+| **WALK 0.25** | **0.1527** | **0.1140** |
+
+A 10.6% better simulated-final loss for a 0.0029 practice cost. WALK
+0.25 is a measured step toward the simulations' optimum (0.20 gives
+0.1306 on sims), not the optimum itself — the simulations run smoother
+than the real final, so the real optimum sits above the simulated one.
+The median, the flat branch, and every other parameter are untouched.
+
 ## This round's change: random-walk spread 0.4 -> 0.30
 
 A pure spread recalibration of the non-flat branch; the median is

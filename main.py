@@ -69,8 +69,10 @@ GROW_N = 6.06         # N jump expected before target when no refresh seen
 GROW_E = 1.02         # E growth over that same jump
 BASE_SPREAD = 0.3     # log-odds floor for unseen refresh jumps
 FLAT_SPREAD = 0.05    # floor when the flat jump prior carries the median
-RW_RATE = 0.30        # log-odds random walk per sqrt(day) (was 0.4;
-                      # measured on seven simulated finals)
+RW_RATE = 0.25        # log-odds random walk per sqrt(day) (was 0.30;
+                      # seven simulated finals: 0.1630 at 0.30, 0.1478 at
+                      # 0.25; the sims run smoother than the real final,
+                      # so 0.25 is a measured step, not the sims optimum)
 POOL_W = 2.0          # weight of the pooled E slope when shrinking
 PULL = 0.85           # pull the extrapolated median toward the last
                       # observed rate (log-odds space, non-flat only)
