@@ -96,6 +96,31 @@ A 10.6% better simulated-final loss for a 0.0029 practice cost. WALK
 than the real final, so the real optimum sits above the simulated one.
 The median, the flat branch, and every other parameter are untouched.
 
+## Round 3's change: random-walk spread 0.25 -> 0.20
+
+The round-2 entry (this same model at WALK 0.25) landed on the live
+board at loss 0.151, rank #819 — again worse than round 1 on the
+practice preview (0.147), again as expected: the preview straddles the
+first refresh and a narrower band pays a small preview cost. The prize
+is still decided on the final, and the walk step keeps paying on
+simulated finals — but this time I also stress-tested the step against
+a sudden jump, because the simulations run smoother than the real
+final and launch night proved the page can jump ~6x in one refresh:
+
+| | sims mean (A/B/C) | jump-stress D | practice LIVE |
+|---|---|---|---|
+| WALK 0.30 | 0.1708 | 0.4877 | 0.1111 |
+| WALK 0.25 | 0.1527 | 0.4956 | 0.1140 |
+| **WALK 0.20** | **0.1355** | **0.5035** | **0.1166** |
+| WALK 0.15 | 0.1199 | 0.5203 | 0.1189 |
+
+0.20 is the last step where the smooth-final gain (0.0172 over 0.25)
+beats the jump cost (0.0079); at 0.15 the trade flips (gain 0.0156,
+cost 0.0168). So 0.20 is a measured step toward the simulations'
+optimum, chosen at the point where the evidence stops supporting a
+tighter walk — not the optimum itself. The median, the flat branch,
+and every other parameter are untouched.
+
 ## This round's change: random-walk spread 0.4 -> 0.30
 
 A pure spread recalibration of the non-flat branch; the median is
